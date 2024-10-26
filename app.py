@@ -20,7 +20,7 @@ def process_images():
         conf = request.files['confidence'].read()
         print('here3')
 
-        print(request.form['intrinsics'])
+        #print(request.form['intrinsics'])
     
 
         #intrinsics = json.load(request.form['intrinsics'])
