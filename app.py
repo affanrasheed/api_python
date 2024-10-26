@@ -13,8 +13,11 @@ def process_images():
     try:
         # Extract data from the request
         img = request.files['image'].read()
+        print('here')
         depth = request.files['depth'].read()
+        print('here2')
         conf = request.files['confidence'].read()
+        print('here3')
 
         intrinsics = [float(x) for x in request.form.getlist('intrinsics')]
         print("intrinsics = "+intrinsics)
