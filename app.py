@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 import io
 from PIL import Image
 import numpy as np
+import json
 
 app = Flask(__name__)
 
@@ -19,10 +20,11 @@ def process_images():
         conf = request.files['confidence'].read()
         print('here3')
 
-        print(request.files['intrinsics'])
-
-        intrinsics = request.files['intrinsics'].read()
-        isDepthAvailable = request.files['flags'].read()
+        intrinsics = json.loads(request.form['intrinsics'])
+        print('here4')
+        
+        isDepthAvailable = json.loads(request.form['flags'])
+        print('here5')
 
         print("intrinsics = "+intrinsics)
 
