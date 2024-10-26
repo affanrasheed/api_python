@@ -37,11 +37,11 @@ def process_images():
         #image1 = Image.open(img)
         depth_image = np.frombuffer(depth, dtype=np.uint16)
         print('here4')
-        print("input frame size = "+depth_image.shape)
+        print(depth_image.shape)
         frame = np.frombuffer(img,dtype=np.uint16)
         #image2 = Image.open(depth)
         print('here5')
-        print("depth frame size = "+frame.shape)
+        print(frame.shape)
 
         # Perform operations on images (example: blend images)
         #blended_image = Image.blend(image1, image2, 0.5)
