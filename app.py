@@ -5,9 +5,10 @@ import numpy as np
 
 app = Flask(__name__)
 
-@app.route('/process_images', methods=['POST','GET'])
+@app.route('/process_images', methods=['POST'])
 def process_images():
     print("call recieved")
+    print(request.files)
     
     try:
         # Extract data from the request
