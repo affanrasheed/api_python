@@ -19,6 +19,8 @@ def process_images():
         conf = request.files['confidence'].read()
         print('here3')
 
+        print(request.form.getlist('intrisics'))
+
         intrinsics = [float(x) for x in request.form.getlist('intrinsics')]
         print("intrinsics = "+intrinsics)
         isDepthAvailable = request.form.get('flags').lower() == 'true'
