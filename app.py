@@ -23,15 +23,15 @@ def process_images():
         print(request.form['intrinsics'])
     
 
-        intrinsics = json.load(request.form['intrinsics'])
-        print('here4')
+        #intrinsics = json.load(request.form['intrinsics'])
+        #print('here4')
 
-        isDepthAvailable = json.load(request.form['flags'])
-        print('here5')
+        #isDepthAvailable = json.load(request.form['flags'])
+        #print('here5')
 
-        print("intrinsics = "+intrinsics)
+        #print("intrinsics = "+intrinsics)
 
-        print("depth flag = "+isDepthAvailable)
+        #print("depth flag = "+isDepthAvailable)
 
         # Convert byte images to PIL Images
         image1 = Image.open(io.BytesIO(img))
