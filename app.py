@@ -1,34 +1,43 @@
 from flask import Flask, request, jsonify
-#import io
-#from PIL import Image
-#import numpy as np
+import io
+from PIL import Image
+import numpy as np
 
 app = Flask(__name__)
 
-@app.route('/process_images', methods=['GET'])
+@app.route('/process_images', methods=['POST','GET'])
 def process_images():
     print("call recieved")
     
     try:
         # Extract data from the request
-        #img = request.files['image'].read()
-        #depth = request.files['depth'].read()
-        #conf = request.files['confidence'].read()
+        img = request.files['image'].read()
+        depth = request.files['depth'].read()
+        conf = request.files['confidence'].read()
 
-        #float_array = [float(x) for x in request.form.getlist('intrinsics')]
-        #bool_flag = request.form.get('flags').lower() == 'true'
+        intrinsics = [float(x) for x in request.form.getlist('intrinsics')]
+        print("intrinsics = "+intrinsics)
+        isDepthAvailable = request.form.get('flags').lower() == 'true'
+        print("depth flag = "+isDepthAvailable)
 
         # Convert byte images to PIL Images
-        #image1 = Image.open(io.BytesIO(img))
-        #image2 = Image.open(io.BytesIO(depth))
+        image1 = Image.open(io.BytesIO(img))
+        print("input frame size = "+image1.size)
+        image2 = Image.open(io.BytesIO(depth))
+        print("depth frame size = "+image2.size)
 
         # Perform operations on images (example: blend images)
-        #blended_image = Image.blend(image1, image2, 0.5)
+        blended_image = Image.blend(image1, image2, 0.5)
+
+        # Convert blended image to numpy array
+        img_array = np.array(blended_image)
 
         # Prepare response
         response = {
             'status': 'success',
-            'message': 'Images processed successfully'
+            'message': 'Images processed successfully',
+            'object_size': img_array.mean()
+
         }
 
         return jsonify(response)
