@@ -35,8 +35,10 @@ def process_images():
 
         # Convert byte images to PIL Images
         image1 = Image.open(io.BytesIO(img))
+        print('here4')
         print("input frame size = "+image1.size)
         image2 = Image.open(io.BytesIO(depth))
+        print('here5')
         print("depth frame size = "+image2.size)
 
         # Perform operations on images (example: blend images)
