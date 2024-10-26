@@ -5,4 +5,3 @@ pyairtable
 gunicorn
 numpy
 pillow
-jsonlib
