@@ -34,24 +34,26 @@ def process_images():
         #print("depth flag = "+isDepthAvailable)
 
         # Convert byte images to PIL Images
-        image1 = Image.open(img)
+        #image1 = Image.open(img)
+        depth_image = np.frombuffer(depth, dtype=np.uint16)
         print('here4')
-        print("input frame size = "+image1.size)
-        image2 = Image.open(depth)
+        print("input frame size = "+depth_image.shape)
+        frame = np.frombuffer(img,dtype=np.uint16)
+        #image2 = Image.open(depth)
         print('here5')
-        print("depth frame size = "+image2.size)
+        print("depth frame size = "+frame.shape)
 
         # Perform operations on images (example: blend images)
-        blended_image = Image.blend(image1, image2, 0.5)
+        #blended_image = Image.blend(image1, image2, 0.5)
 
         # Convert blended image to numpy array
-        img_array = np.array(blended_image)
+        #img_array = np.array(blended_image)
 
         # Prepare response
         response = {
             'status': 'success',
             'message': 'Images processed successfully',
-            'object_size': img_array.mean()
+            'object_size': depth_image.mean()
 
         }
 
