@@ -20,10 +20,13 @@ def process_images():
         conf = request.files['confidence'].read()
         print('here3')
 
-        intrinsics = json.loads(request.form['intrinsics'])
+        print(request.form['intrinsics'])
+    
+
+        intrinsics = json.load(request.form['intrinsics'])
         print('here4')
-        
-        isDepthAvailable = json.loads(request.form['flags'])
+
+        isDepthAvailable = json.load(request.form['flags'])
         print('here5')
 
         print("intrinsics = "+intrinsics)
