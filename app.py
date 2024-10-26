@@ -34,10 +34,10 @@ def process_images():
         #print("depth flag = "+isDepthAvailable)
 
         # Convert byte images to PIL Images
-        image1 = Image.open(io.BytesIO(img))
+        image1 = Image.open(img)
         print('here4')
         print("input frame size = "+image1.size)
-        image2 = Image.open(io.BytesIO(depth))
+        image2 = Image.open(depth)
         print('here5')
         print("depth frame size = "+image2.size)
 
